@@ -1,11 +1,13 @@
 class VideosController < ApplicationController
 
-	def new
+	def show
 		config_yt_api_key
-		@video = Yt::Video.new id: 'RS49gJ2eKrY'
-		@video_link = get_video_link(@video)
-		# binding.pry
-		render 'show'
+		video = Yt::Video.new id: params[:id]
+		video_link = get_video_link(video)
+		render 'show', locals: {video: video, video_link: video_link}
+	end
+
+	def new
 	end
 
 	private
@@ -16,7 +18,5 @@ class VideosController < ApplicationController
 		def get_video_link(video)
 			"https://www.youtube.com/embed/#{video.id}"
 		end
-		# def embed_html(video)
-		# 	video.embed_html
-		# end
+
 end

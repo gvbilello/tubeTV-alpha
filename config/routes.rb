@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
 
-  resources :videos, only: :new
+  resources :videos, only: :show
   resources :users, except: :index
   resources :sessions
   root 'static#index'
