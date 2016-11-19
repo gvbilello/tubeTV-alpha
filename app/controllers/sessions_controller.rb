@@ -4,8 +4,9 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		user = User.find_by(username: params[:session][:email])
-		if user && user.authenticate(params[:sessions][:password])
+		# binding.pry
+		user = User.find_by(username: params[:session][:username])
+		if user && user.authenticate(params[:session][:password])
 			session[:user_id] = user.id
 			redirect_to user
 		else
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
 
 	def destroy
 		session.clear
-		redirect_to '/'
+		redirect_to root_url
 	end
 
 end
