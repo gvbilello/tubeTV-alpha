@@ -32,8 +32,12 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Materialize for Rails CSS
 gem 'materialize-sass'
 
+# youtube_it seemingly does not work with recent Google update
 # Enable Youtube integration with Rails
-gem 'youtube_it'
+# gem 'youtube_it'
+
+# Enable Youtube integration with Yt in Rails
+gem 'yt', '~> 0.28.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

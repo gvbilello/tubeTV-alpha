@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
-  
+
+  resources :videos, only: :new
   resources :users, except: :index
   resources :sessions
-
   root 'static#index'
 end
