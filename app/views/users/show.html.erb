@@ -1,1 +1,27 @@
-<h1><%= @user.username %>'s Profile</h1>
+<h1><%= @user.username %>'s Channels</h1>
+
+<!-- add new channel form -->
+<%= form_for :channel, url: channels_path do |f| %>
+	<%= render partial: 'application/errors', layout: false, locals: { errors: @errors } %>
+	
+	<p>
+		<%= f.label :channel_key %>
+		<%= f.text_field :channel_key %>
+	</p>
+
+	<p>
+		<%= f.submit "Add Channel" %>
+	</p>
+<% end %>
+
+<table>
+	<tr>
+		<td>Channels</td>
+	</tr>
+	<% @user.channels.each do |channel| %>
+		<% yt_channel = Yt::Channel.new id: channel.channel_key %>
+		<tr>
+			<td><%= link_to("#{yt_channel.title}", channel_path(channel)) %></td>
+		</tr>
+	<% end %>
+</table>
