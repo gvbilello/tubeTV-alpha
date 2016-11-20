@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
+	before_action :config_yt_api_key
 
 	def show
-		config_yt_api_key
 		video = Yt::Video.new id: params[:id]
 		video_link = get_video_link(video)
 		render 'show', locals: {video: video, video_link: video_link}

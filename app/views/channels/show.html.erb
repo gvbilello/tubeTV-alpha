@@ -1,0 +1,10 @@
+<table>
+	<tr>
+		<td>Videos</td>
+	</tr>
+	<% @videos.each do |video| %>
+		<tr>
+			<td><%= link_to("#{video.title}", video_path(video.id)) %></td>
+		</tr>
+	<% end %>
+</table>

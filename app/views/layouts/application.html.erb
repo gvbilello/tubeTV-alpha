@@ -14,6 +14,7 @@
   </head>
 
   <body>
+  	<div class="container">
 	  <nav>
       <div class="nav-wrapper">
       	<a href="/" class="brand-logo">tubeTV</a>
@@ -26,10 +27,12 @@
           <li><%= link_to 'Register', register_path %></li>
           <li><%= link_to 'Sign In', signin_path %></li>
         <% end %>
+        </ul>
       </div>
     </nav>
     <div class="notice"><%= flash[:success] %></div>
     <div class="alert"><%= flash[:danger] %></div>
     <%= yield %>
+    </div>
   </body>
 </html>
