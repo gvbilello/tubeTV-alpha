@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-	before_action :config_yt_api_key
-	
+
 	def new
 	end
 
@@ -22,8 +21,4 @@ class SessionsController < ApplicationController
 		redirect_to root_url
 	end
 
-	private
-		def config_yt_api_key
-			Yt.configuration.api_key = "AIzaSyBLW8pwIL_DHtEDY_K56wJCDeZ9akMIK58"
-		end
 end

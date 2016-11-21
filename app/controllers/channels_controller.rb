@@ -1,11 +1,11 @@
 class ChannelsController < ApplicationController
-	before_action :config_yt_api_key
 
 	def show
 		channel = Channel.find(params[:id])
 		@channel = Yt::Channel.new id: channel.channel_key
 		@videos = []
 		@channel.videos.each do |video|
+			break if @videos.length == 50
 			@videos << video
 		end
 	end
@@ -32,10 +32,6 @@ class ChannelsController < ApplicationController
 	end
 
 	private
-		def config_yt_api_key
-			Yt.configuration.api_key = "AIzaSyBLW8pwIL_DHtEDY_K56wJCDeZ9akMIK58"
-		end
-
 		def channel_params
 			params.require(:channel).permit(:channel_key, :user_id)
 		end
