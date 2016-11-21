@@ -13,3 +13,24 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+// $(document).ready(function() {
+
+// 	$(".access-info-form").submit(function(event) {
+// 		// debugger;
+// 		event.preventDefault();
+
+// 		$.ajax({
+// 			url: "https://accounts.google.com/o/oauth2/token",
+// 			method: "POST"
+// 		})
+
+// 		.done(function(response) {
+// 			debugger;
+// 		})
+
+// 		.fail(function(response) {
+// 			debugger;
+// 		})
+// 	})
+// })

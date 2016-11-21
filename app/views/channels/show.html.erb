@@ -1,10 +1,16 @@
 <table>
 	<tr>
-		<td>Videos</td>
-	</tr>
 	<% @videos.each do |video| %>
-		<tr>
-			<td><%= link_to("#{video.title}", video_path(video.id)) %></td>
-		</tr>
+		<% if (@videos.index(video) + 1) % 4 == 0 %>
+			<td class="col s1">
+				<div class="card-panel hoverable center-align vertical-align"><%= link_to image_tag("#{video.thumbnail_url}"), :controller => "videos", :action => "show", :id => "#{video.id}" %></div>
+			</td>
+			</tr>
+		<% else %>
+			<td class="col s1">
+				<div class="card-panel hoverable center-align vertical-align"><%= link_to image_tag("#{video.thumbnail_url}"), :controller => "videos", :action => "show", :id => "#{video.id}" %>
+			</td>
+		<% end %>
 	<% end %>
+	</tr>
 </table>
