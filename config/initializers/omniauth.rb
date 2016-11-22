@@ -1,6 +1,49 @@
+# config/initializers/omniauth.rb
+
 OmniAuth.config.logger = Rails.logger
- 
+
+# Google's OAuth2 docs. Make sure you are familiar with all the options
+# before attempting to configure this gem.
+# https://developers.google.com/accounts/docs/OAuth2Login
+
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :google_oauth2, "704828876082-b463nsmo0uontb2vg0pvmglbn5isv8ak.apps.googleusercontent.com"
-, "PxG7-5gDjJILQKLOcTdIMAih", {client_options: {ssl: {ca_file: Rails.root.join("cacert.pem").to_s}}}
+  # Default usage, this will give you offline access and a refresh token
+  # using default scopes 'email' and 'profile'
+  #
+  # provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {
+  #   :scope => 'email,profile'
+  # }
+
+  # Manual setup for offline access with a refresh token.
+  #
+  # provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {
+  #   :access_type => 'offline',
+  # }
+
+  # Custom scope supporting youtube. If you are customizing scopes, remember
+  # to include the default scopes 'email' and 'profile'
+  #
+  provider :google_oauth2, ENV["704828876082-b463nsmo0uontb2vg0pvmglbn5isv8ak.apps.googleusercontent.com"], ENV["PxG7-5gDjJILQKLOcTdIMAih"], {
+    :scope => 'http://gdata.youtube.com,email,profile,plus.me'
+  }
+
+  # Custom scope for users only using Google for account creation/auth and do not require a refresh token.
+  #
+  # provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {
+  #   :access_type => 'online',
+  #   :prompt => ''
+  # }
+
+  # To include information about people in your circles you must include the 'plus.login' scope.
+  #
+  # provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {
+  #   :skip_friends => false,
+  #   :scope => "email,profile,plus.login"
+  # }
+
+  # If you need to acquire whether user picture is a default one or uploaded by user.
+  #
+  # provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {
+  #   :skip_image_info => false
+  # }
 end

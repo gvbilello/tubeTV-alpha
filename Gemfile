@@ -38,7 +38,7 @@ gem 'materialize-sass'
 
 # Enable Youtube integration with Yt in Rails
 gem 'yt', '~> 0.28.0'
-gem "omniauth-google-oauth2"
+gem 'omniauth-google-oauth2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
